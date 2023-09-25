@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+      table, th, td {
+        border: 1px;
+        border: solid black;
+      }
+   </style> 
+    <title>Recipe App</title>
+</head>
+<body>
+    <div class="container mt-5">
+      <!-- used to import bootstrap -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+      <!-- enctype="multipart/form-data" use to store img type data -->
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+            <h2>Login Page</h2>
+            <hr>
+            <div class="mb-3">
+              <label for="Recipename" class="form-label">Username</label>
+              <input name="username" type="text" required class="form-control" >
+            </div>
+             <div class="mb-3">
+                <label for="Recipename" class="form-label">Password</label>
+                <input name="password" type="text" required class="form-control" >
+              </div>
+          {% if messages %}
+              <ul class="messages">
+                  {% for message in messages %}
+                  <h6 {% if message.tags %} class="{{message.tags}}" {% endif %}> 
+                  <div class="alert alert-danger" role="alert">
+                    {{message}}
+                  </div></h6>
+                  {% endfor %}
+              </ul>
+          {% endif %}
+            <button type="submit" class="btn btn-success">Login</button>
+              <hr>
+              <center>
+            <label for="Recipename" class="form-label">Need an Account?</label>
+            <a href="/register/">SIGN_UP</a>
+              </center>
+
+          </form>
+    </div>    
+
+</body>
+</html>
